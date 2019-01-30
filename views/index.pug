@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  div.nav
+
+  form(action='/quotes',method='POST')
+    .form-group.row
+      label.col-sm-2.col-form-label(for='staticEmail') Email
+      .col-sm-10
+        input.form-control#staticEmail(type='text', placeholder='email')
+    .form-group.row
+      label.col-sm-2.col-form-label(for='inputPassword') Password
+      .col-sm-10
+        input.form-control#inputPassword(type='password', placeholder='Password')
+    .form-group.row
+      .col-sm-10
+        button.btn.btn-primary(type="submit",style='float:right') submit
