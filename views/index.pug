@@ -1,19 +1,67 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  div.nav
+  .container-fluid
+    .hero-img
+      #carouselExampleIndicators.carousel.slide(data-ride='carousel')
+        ol.carousel-indicators
+          li.active(data-target='#carouselExampleIndicators', data-slide-to='0')
+          li(data-target='#carouselExampleIndicators', data-slide-to='1')
+          li(data-target='#carouselExampleIndicators', data-slide-to='2')
+        .carousel-inner
+          .carousel-item.active
+            img(src="https://images.unsplash.com/photo-1534791108293-e080c7d856e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80", alt="").img-flud
+          .carousel-item
+            img(src="https://images.unsplash.com/photo-1504366130991-154787072d46?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1189&q=80", alt="").img-flud
+          .carousel-item
+            img(src="https://images.unsplash.com/photo-1504575797-2f83688754b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80", alt="").img-flud
+      .header-text.text-center
+        h1
+          |All the 
+          span#B B
+          span#M m
+          span#W w 
+          |news you will need
+    .lower-nav
+      ul
+        li: a(href="#") Most Recent
+        li: a(href="#") Popular
+        li: a(href="#") Editors Choice
+        li: a(href="#") Feeling Lucky
+  .card-section
+    .container
+      .row
+        .col-sm
+          .card
+            img.card-img-top(src='https://images.unsplash.com/photo-1441148345475-03a2e82f9719?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60', alt='...')
+            .card-body
+              h5.card-title Card title
+              p.card-text
+                | Some quick example text to build on the card title and make up the bulk of the card's content.
+              a.btn.btn-primary(href='#') Read More
+        .col-sm
+          .card
+            img.card-img-top(src='https://images.unsplash.com/photo-1441148345475-03a2e82f9719?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60', alt='...')
+            .card-body
+              h5.card-title Card title
+              p.card-text
+                | Some quick example text to build on the card title and make up the bulk of the card's content.
+              a.btn.btn-primary(href='#') Go somewhere
+        .col-sm
+          .card
+            img.card-img-top(src='https://images.unsplash.com/photo-1441148345475-03a2e82f9719?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60', alt='...')
+            .card-body
+              h5.card-title Card title
+              p.card-text
+                | Some quick example text to build on the card title and make up the bulk of the card's content.
+              a.btn.btn-primary(href='#') Go somewhere
 
-  form(action='/quotes',method='POST')
-    .form-group.row
-      label.col-sm-2.col-form-label(for='staticEmail') Email
-      .col-sm-10
-        input.form-control#staticEmail(type='text', placeholder='email')
-    .form-group.row
-      label.col-sm-2.col-form-label(for='inputPassword') Password
-      .col-sm-10
-        input.form-control#inputPassword(type='password', placeholder='Password')
-    .form-group.row
-      .col-sm-10
-        button.btn.btn-primary(type="submit",style='float:right') submit
+
+
+
+  
+    
+
+
+
+

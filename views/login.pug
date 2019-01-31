@@ -1,0 +1,14 @@
+extends layout
+block content
+    .login-bg
+        .login-wrapper
+            .container.border-style.text-center
+                i.fas.fa-user-circle
+                form(action="/login", method="post")
+                    .form-group
+                        input.form-control(type='email', placeholder='Enter email')
+                    .form-group
+                        input.form-control(type='password', placeholder='Password')
+                    button.btn.btn-primary(type='submit') Login
+                h6 Not a member? 
+                    a(href="/register") Register

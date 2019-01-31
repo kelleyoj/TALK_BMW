@@ -1,8 +1,295 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+body .container-fluid{
+    padding: 0;
+}
+html,body{
+    background-image: url('https://images.unsplash.com/photo-1528872042734-8f50f9d3c59b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
-a {
-  color: #00B7FF;
+/********************** 
+
+    index page style 
+    
+************************/
+.hero-img{
+    /* border: 2px solid red; */
+    height: 22em;
+    width: 100%;
+}
+.hero-img img{
+    height: 22em;
+    width: 100%;
+    object-fit: cover;
+    filter: blur(1px);
+}
+.header-text{
+    position: absolute;
+    color: white;
+    z-index: 1;
+    top: 1.2em;
+    left: 18%;
+    font-size: 10em;
+    font-family: 'Major Mono Display', monospace;
+    font-weight: bold;
+}
+#B{
+    color: skyblue;
+}
+#M{
+    color: darkblue;
+}
+#W{
+    color: red;
+}
+#login{
+    padding-right: 1%;
+}
+.lower-nav{
+    text-align: center;
+    background-color: #f8f9fa;
+    /* border: 2px solid green; */
+}
+.lower-nav ul{
+    display: inline-block;
+    /* border: 2px solid orange; */
+    width: 100%;
+    height: auto;
+    margin: 0;
+}
+.lower-nav ul li{
+    display: inline-block;
+    list-style: none;
+    /* border: 2px solid purple; */
+    padding: .5em 1.2em .5em 1.2em;
+}
+.lower-nav ul li:hover{
+    background-color: white;
+}
+.lower-nav ul li a{
+    color: black;
+    font-size: 1.5em;
+}
+.lower-nav ul li a:hover{
+    text-decoration: none;
+}
+
+/********************** 
+
+blog post style for index
+    
+************************/
+.card-section{
+    padding: 5% 0 5% 0;
+}
+.col .card{
+    width: 18rem;
+}
+.card-body{
+    background-color: #f8f9fa;
+}
+
+
+/********************** 
+
+    Login page style 
+    
+************************/
+/* .login-bg{
+    background-image: url('https://images.unsplash.com/photo-1528872042734-8f50f9d3c59b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80');
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+} */
+.login-wrapper{
+    position: absolute;
+    /* border: 2px solid red; */
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 7% 0 0 0;
+    width: 35%;
+    height: 60%;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+}
+.border-style{
+    /* border: 1px solid green; */
+    width: 100%;
+}
+.border-style form{
+    /* border: 1px solid purple; */
+    width: 100%;
+    padding-top: 3%;
+    padding-bottom: 10%;
+}
+.login-wrapper form .form-group{
+    padding-bottom: 3%;
+}
+.login-wrapper form .btn.btn-primary{
+    width: 100%;
+    font-size: 1.3em;
+}
+.fa-user-circle:before{
+    position: absolute;
+    font-size: 5em;
+    color: #007bff;
+    top: 5%;
+    left: 40%;
+}
+
+/********************** 
+
+    Register page style 
+
+************************/
+.register-wrapper{
+    position: absolute;
+    /* border: 2px solid red; */
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 7% 0 0 0;
+    width: 35%;
+    height: 70%;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
+}
+.register-wrapper form .btn.btn-primary{
+    width: 100%;
+    font-size: 1.3em;
+}
+.fa-registered:before{
+    position: absolute;
+    font-size: 5em;
+    color: #007bff;
+    top: 5%;
+    left: 40%;
+}
+
+/********************** 
+
+    Display page style 
+    
+************************/
+.display-wrapper{
+    background-color: white;
+    margin: 5% 5% 5% 5%;
+    font-family: 'Roboto', sans-serif;
+}
+.head-wrapper{
+    padding: 5% 0 4% 0;
+}
+.hero-wrapper{
+    width: 100%;
+    height: 22em;
+}
+.hero-wrapper h5{
+    padding: 4% 0 0 0;
+}
+.hero-wrapper img{
+    object-fit: cover;
+    height: 20em;
+    width: 100%;
+}
+.article-wrapper{
+    padding: 7% 0 0 0;
+}
+.article-wrapper p{
+    padding-bottom: 4%;
+}
+.comment-wrapper{
+    padding: 4% 0 5% 0;
+}
+.comment-wrapper form .form-group{
+    padding: 0;
+}
+.comment-wrapper .btn-outline-primary{
+    margin-left: 89.5%;
+}
+.container .comments .row{
+    padding-top: 5%;
+}
+.container .comments .row h5 strong{
+    color: blue;
+}
+
+/* Right side of the comment page */
+.right-wrapper{
+    padding-top: 29%;
+}
+.right-wrapper .container .row a{
+    color: white;
+}
+.right-wrapper .container .row a:hover{
+    color: white;
+    text-decoration: none;
+}
+.right-wrapper .container  .row .col-sm-3 .row, .right-wrapper .container  .row .col-sm-6 .row{
+    padding: 3% 0 3% 0 ;
+}
+.right-wrapper .container  .col-sm-6 #twitter-logo{
+    background-color:  #00aced;
+    padding: 8% ;
+}
+.right-wrapper .container  .row #twitter-word{
+    background-color: #0084b4;
+    padding: 8% ;
+}
+.right-wrapper .container  .col-sm-6 #fb-logo{
+    background-color: #3b5998;
+    padding: 8% ;
+}
+.right-wrapper .container  .row #fb-word{
+    background-color: #6d84b4;
+    padding: 8% ;
+}
+.right-wrapper .container  .col-sm-6 #insta-logo{
+    background-color: #fb3958;
+    padding: 8% ;
+}
+.right-wrapper .container  .row #insta-word{
+    background-color: #ffc838;
+    padding: 8% ;
+}
+.right-wrapper .container  .col-sm-6 #pin-logo{
+    background-color: #cb2027;
+    padding: 8% ;
+}
+.right-wrapper .container  .row #pin-word{
+    background-color: #7c070b;
+    padding: 8% ;
+}
+/* lastest post for right side of display page */
+.latest-post{
+    padding-top: 20%;
+}
+.latest-post .post{
+    padding-bottom: 15%;
+}
+.latest-post .post-img{
+    width: 100%;
+    height: 3em;
+}
+.latest-post .post-img img{
+    height: 5em;
+    width: 100%;
+    object-fit: cover;
+}
+
+/********************** 
+
+    New page style 
+    
+************************/
+.new-wrapper{
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    padding: 2% 0 0 0;
+    width: 35%;
+    height: 89%;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 10px;
 }

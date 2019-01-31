@@ -1,0 +1,16 @@
+extends layout
+block content
+    .login-bg
+        .register-wrapper
+            .container.border-style.text-center
+                i.far.fa-registered
+                form(action="/register", method="post")
+                    .form-group
+                        input.form-control(type='text', placeholder='Username')
+                    .form-group
+                        input.form-control(type='email', placeholder='Enter email')
+                    .form-group
+                        input.form-control(type='password', placeholder='Password')
+                    .form-group
+                        input.form-control(type='password', placeholder='Confirm password')
+                    button.btn.btn-primary(type='submit') Register

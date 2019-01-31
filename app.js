@@ -7,8 +7,14 @@ var logger = require('morgan');
 var MongoClient = require('mongodb').MongoClient;
 var url = 'mongodb://localhost/testdb';
 
+// requiring routes
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var registerRouter = require('./routes/register');
+var loginRouter = require('./routes/login');
+var displayRouter = require('./routes/display');
+var newRouter = require('./routes/new');
+var editRouter = require('./routes/edit');
+
 
 var app = express();
 
@@ -20,7 +26,7 @@ app.set('view options', { pretty: true });
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'bower_components')));
@@ -30,12 +36,13 @@ MongoClient.connect(url, function (err, db) {
   // db.close();
 });
 
+// routes
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-
-app.post('/', function(req,res){
-  console.log(req.body);
-})
+app.use('/register', registerRouter);
+app.use('/login', loginRouter);
+app.use('/display', displayRouter);
+app.use('/new',newRouter);
+app.use('/edit',editRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

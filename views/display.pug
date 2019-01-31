@@ -1,0 +1,132 @@
+extends layout
+block content
+    .display-wrapper
+        .row
+            .col-lg-8
+                .head-wrapper
+                    .container  
+                        .row
+                            .col-lg-12
+                                h1
+                                    strong BMW is the greates car on earth
+                        .row
+                            .col-lg-12
+                                h4
+                                    | Author: 
+                                    strong otis kelley 
+                                    |Date: 1/31/2019
+                        hr
+                //- picture for each blog post
+                .hero-wrapper
+                    .container
+                        img(src="https://images.unsplash.com/photo-1528659960408-6afcdde40a3a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1190&q=80", alt="").img-fluid
+                        h5 
+                            stong What makes the bmw so great
+                //- Article body
+                .article-wrapper
+                    .container
+                        p.
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam culpa optio dolorem natus quas 
+                            fugit quae excepturi consequuntur cum, repellat ex amet assumenda deserunt iusto blanditiis consequatur! 
+                            Corrupti, suscipit! Molestiae.
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam culpa optio dolorem natus quas 
+                            fugit quae excepturi consequuntur cum, repellat ex amet assumenda deserunt iusto blanditiis consequatur! 
+                            Corrupti, suscipit! Molestiae.
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam culpa optio dolorem natus quas 
+                            fugit quae excepturi consequuntur cum, repellat ex amet assumenda deserunt iusto blanditiis consequatur! 
+                            Corrupti, suscipit! Molestiae.Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam culpa optio dolorem natus quas 
+                            fugit quae excepturi consequuntur cum, repellat ex amet assumenda deserunt iusto blanditiis consequatur! 
+                            Corrupti, suscipit! Molestiae.Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam culpa optio dolorem natus quas 
+                            fugit quae excepturi consequuntur cum, repellat ex amet assumenda deserunt iusto blanditiis consequatur! 
+                            Corrupti, suscipit! Molestiae.Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam culpa optio dolorem natus quas 
+                            fugit quae excepturi consequuntur cum, repellat ex amet assumenda deserunt iusto blanditiis consequatur! 
+                            Corrupti, suscipit! Molestiae.
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam culpa optio dolorem natus quas 
+                            fugit quae excepturi consequuntur cum, repellat ex amet assumenda deserunt iusto blanditiis consequatur! 
+                            Corrupti, suscipit! Molestiae.
+                        button.btn.btn-outline-success(type="submit", style='margin-right: 2%;') Edit Post
+                        button.btn.btn-outline-danger(type='submit', style='display: ;') Delete
+                        hr
+                //- comments
+                .comment-wrapper
+                    .container
+                        form(action="/comment",method="post")
+                            .form-group
+                                label(for='exampleFormControlTextarea1') 
+                                    strong 
+                                        h5 Add Comment
+                                textarea#exampleFormControlTextarea1.form-control(rows='2')
+                            button.btn.btn-outline-primary(type='submit') Submit
+                        .comments
+                            .row
+                                .col-lg-12
+                                    h5 
+                                        strong username 
+                                        | date: 2/1/2019
+                                .col-lg-12
+                                    p.
+                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                                        Aspernatur molestias, minus totam ipsam laboriosam 
+                                        fuga adipisci quia deserunt soluta modi esse, vel cumque.
+                                        Sequi cupiditate aliquam deserunt facilis odio vero.
+                                    button.btn.btn-outline-danger(type='submit', style='display: ;') Delete
+            //- right side of the blog
+            .col-lg-4
+                .right-wrapper
+                    .container 
+                        h5 
+                            strong Stay conected
+                        hr
+                        .container
+                            .row.no-gutters
+                                
+                                    .col-sm-6
+                                        .row
+                                            .col-sm-3#twitter-logo
+                                                a(href="#"): i.fab.fa-twitter
+                                            .col-sm-6#twitter-word
+                                                a(href="#") Twitter
+                                    .col-sm-6
+                                        .row
+                                            .col-sm-3#fb-logo
+                                                a(href="#"): i.fab.fa-facebook-f
+                                            .col-sm-6#fb-word
+                                                a(href="#") Facebook
+                            .row.no-gutters
+                                    .col-sm-6
+                                        .row
+                                            .col-sm-3#insta-logo
+                                                a(href="#"): i.fab.fa-instagram
+                                            .col-sm-6#insta-word
+                                                a(href="#") Instagram
+                                    .col-sm-6
+                                        .row
+                                            .col-sm-3#pin-logo
+                                                a(href="#"): i.fab.fa-pinterest
+                                            .col-sm-6#pin-word
+                                                a(href="#") Pinterest
+                    .latest-post
+                        .container
+                            h5 
+                                | Latest Post
+                            hr
+                            .row.post
+                                .col-sm-4
+                                    .post-img
+                                        img(src="https://images.unsplash.com/photo-1536364127590-1594e3161294?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80", alt="")
+                                .col-sm-8
+                                    p 5 ways to drive a manual
+
+                            .row.post
+                                .col-sm-4
+                                    .post-img
+                                        img(src="https://images.unsplash.com/photo-1546898453-73f51e69b1d7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60", alt="")
+                                .col-sm-8
+                                    p Save the manual      
+                            
+                            .row.post
+                                .col-sm-4
+                                    .post-img
+                                        img(src="https://images.unsplash.com/photo-1542231705231-d01306092320?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=564&q=80", alt="")
+                                .col-sm-8
+                                    p Why bmw Interior is the best  
