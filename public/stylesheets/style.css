@@ -82,8 +82,8 @@ blog post style for index
 .card-section{
     padding: 5% 0 5% 0;
 }
-.col .card{
-    width: 18rem;
+.card-section .col-sm-4{
+    padding-bottom: 3%;
 }
 .card-body{
     background-color: #f8f9fa;

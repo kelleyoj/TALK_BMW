@@ -4,22 +4,22 @@ block content
         .container.border-style
                 h1 
                     strong  New Blog 
-                form(action="/login", method="post")
+                form(action="/new", method="post")
                     .form-group
                         label(for="title") 
                             strong Title
-                        input#title.form-control(type='text')
+                        input#title.form-control(type='text',name='title')
                     .form-group
                         label(for="sub-title") 
                             strong Sub Title
-                        input#sub-title.form-control(type='text')
+                        input#sub-title.form-control(type='text',name='subtitle')
                     .form-group
                         label(for="image") 
                             strong Image Url
-                        input#image.form-control(type='text')
+                        input#image.form-control(type='text',name='image')
                     .form-group
                         label(for="content") 
                             strong Blog Content
-                        textarea#content.form-control(rows='6')
+                        textarea#content.form-control(rows='6',name='content')
                     button.btn.btn-primary(type='submit') Submit
 

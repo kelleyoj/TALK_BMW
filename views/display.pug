@@ -8,67 +8,45 @@ block content
                         .row
                             .col-lg-12
                                 h1
-                                    strong BMW is the greates car on earth
+                                    strong #{blog.title}
                         .row
                             .col-lg-12
-                                h4
-                                    | Author: 
-                                    strong otis kelley 
-                                    |Date: 1/31/2019
+                                h5
+                                    | #{blog.created.toDateString()} /
+                                    strong  otis kelley 
+                                    
                         hr
                 //- picture for each blog post
                 .hero-wrapper
                     .container
-                        img(src="https://images.unsplash.com/photo-1528659960408-6afcdde40a3a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1190&q=80", alt="").img-fluid
+                        img(src=`${blog.image}`, alt="").img-fluid
                         h5 
-                            stong What makes the bmw so great
+                            stong #{blog.subtitle}
                 //- Article body
                 .article-wrapper
                     .container
-                        p.
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam culpa optio dolorem natus quas 
-                            fugit quae excepturi consequuntur cum, repellat ex amet assumenda deserunt iusto blanditiis consequatur! 
-                            Corrupti, suscipit! Molestiae.
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam culpa optio dolorem natus quas 
-                            fugit quae excepturi consequuntur cum, repellat ex amet assumenda deserunt iusto blanditiis consequatur! 
-                            Corrupti, suscipit! Molestiae.
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam culpa optio dolorem natus quas 
-                            fugit quae excepturi consequuntur cum, repellat ex amet assumenda deserunt iusto blanditiis consequatur! 
-                            Corrupti, suscipit! Molestiae.Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam culpa optio dolorem natus quas 
-                            fugit quae excepturi consequuntur cum, repellat ex amet assumenda deserunt iusto blanditiis consequatur! 
-                            Corrupti, suscipit! Molestiae.Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam culpa optio dolorem natus quas 
-                            fugit quae excepturi consequuntur cum, repellat ex amet assumenda deserunt iusto blanditiis consequatur! 
-                            Corrupti, suscipit! Molestiae.Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam culpa optio dolorem natus quas 
-                            fugit quae excepturi consequuntur cum, repellat ex amet assumenda deserunt iusto blanditiis consequatur! 
-                            Corrupti, suscipit! Molestiae.
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam culpa optio dolorem natus quas 
-                            fugit quae excepturi consequuntur cum, repellat ex amet assumenda deserunt iusto blanditiis consequatur! 
-                            Corrupti, suscipit! Molestiae.
-                        button.btn.btn-outline-success(type="submit", style='margin-right: 2%;') Edit Post
-                        button.btn.btn-outline-danger(type='submit', style='display: ;') Delete
+                        p #{blog.content}
+                        a(href="/display/"+`${blog.id}` +'/edit'): button.btn.btn-outline-success(type="submit", style='margin-right: 2%;') Edit Post
+                        a(href="/display/"+`${blog.id}` +'/delete'): button.btn.btn-outline-danger(type='submit', style='display: ;') Delete
                         hr
                 //- comments
                 .comment-wrapper
                     .container
-                        form(action="/comment",method="post")
+                        form(action=`/comment/${blog.id}/new`,method="post")
                             .form-group
                                 label(for='exampleFormControlTextarea1') 
                                     strong 
                                         h5 Add Comment
-                                textarea#exampleFormControlTextarea1.form-control(rows='2')
+                                textarea#exampleFormControlTextarea1.form-control(rows='4', name='comment')
                             button.btn.btn-outline-primary(type='submit') Submit
                         .comments
                             .row
                                 .col-lg-12
                                     h5 
                                         strong username 
-                                        | date: 2/1/2019
+                                        | #{blog.comment.date.toDateString()}
                                 .col-lg-12
-                                    p.
-                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                                        Aspernatur molestias, minus totam ipsam laboriosam 
-                                        fuga adipisci quia deserunt soluta modi esse, vel cumque.
-                                        Sequi cupiditate aliquam deserunt facilis odio vero.
+                                    p #{blog.comment.comment}
                                     button.btn.btn-outline-danger(type='submit', style='display: ;') Delete
             //- right side of the blog
             .col-lg-4

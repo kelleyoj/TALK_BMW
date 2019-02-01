@@ -4,21 +4,21 @@ block content
         .container.border-style
                 h1 
                     strong Edit Blog
-                form(action="/login", method="post")
+                form(action='/display/'+`${blog.id}`+'/edit', method="post")
                     .form-group
                         label(for="title") 
                             strong Title
-                        input#title.form-control(type='text')
+                        input#title.form-control(type='text', name='title' value =`${blog.title}`)
                     .form-group
                         label(for="sub-title") 
                             strong Sub Title
-                        input#sub-title.form-control(type='text')
+                        input#sub-title.form-control(type='text', name='subtitle', value =`${blog.subtitle}`)
                     .form-group
                         label(for="image") 
                             strong Image Url
-                        input#image.form-control(type='text')
+                        input#image.form-control(type='text', name='image',value =`${blog.image}`)
                     .form-group
                         label(for="content") 
                             strong Blog Content
-                        textarea#content.form-control(rows='6')
+                        textarea#content.form-control(rows='6', name='content') #{blog.content}
                     button.btn.btn-primary(type='submit') Submit

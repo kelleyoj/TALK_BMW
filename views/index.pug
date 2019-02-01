@@ -28,34 +28,19 @@ block content
         li: a(href="#") Popular
         li: a(href="#") Editors Choice
         li: a(href="#") Feeling Lucky
+        li: a(href="/new" style='color: red') New Post
   .card-section
     .container
       .row
-        .col-sm
-          .card
-            img.card-img-top(src='https://images.unsplash.com/photo-1441148345475-03a2e82f9719?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60', alt='...')
-            .card-body
-              h5.card-title Card title
-              p.card-text
-                | Some quick example text to build on the card title and make up the bulk of the card's content.
-              a.btn.btn-primary(href='#') Read More
-        .col-sm
-          .card
-            img.card-img-top(src='https://images.unsplash.com/photo-1441148345475-03a2e82f9719?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60', alt='...')
-            .card-body
-              h5.card-title Card title
-              p.card-text
-                | Some quick example text to build on the card title and make up the bulk of the card's content.
-              a.btn.btn-primary(href='#') Go somewhere
-        .col-sm
-          .card
-            img.card-img-top(src='https://images.unsplash.com/photo-1441148345475-03a2e82f9719?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60', alt='...')
-            .card-body
-              h5.card-title Card title
-              p.card-text
-                | Some quick example text to build on the card title and make up the bulk of the card's content.
-              a.btn.btn-primary(href='#') Go somewhere
-
+        each entry in blog
+          .col-sm-4
+            .card
+              img.card-img-top(src=`${entry.image}`, alt='...')
+              .card-body
+                h5.card-title #{entry.title}
+                p.card-text
+                  | #{entry.content.substring(0,90)} ....
+                a.btn.btn-primary(href="/display/"+`${entry._id}`) Read More
 
 
 

@@ -4,8 +4,19 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
-var MongoClient = require('mongodb').MongoClient;
-var url = 'mongodb://localhost/testdb';
+var mongoose = require('mongoose');
+var methodOverride = require('method-override');
+
+// var url = 'mongodb://localhost/testdb';
+
+
+var pw = 'nFgRmE7pQ7uLpVi';
+var url = 'mongodb://kelleyoj:' + pw + '@ds011735.mlab.com:11735/bmw';
+
+//magic∂
+var app = express();
+
+app.use(methodOverride('_method'));
 
 // requiring routes
 var indexRouter = require('./routes/index');
@@ -13,10 +24,15 @@ var registerRouter = require('./routes/register');
 var loginRouter = require('./routes/login');
 var displayRouter = require('./routes/display');
 var newRouter = require('./routes/new');
-var editRouter = require('./routes/edit');
+var commentRouter = require('./routes/comment');
 
 
-var app = express();
+// Schema require
+var Blog = require('./models/blog');
+var Comment = require('./models/comment');
+var User = require('./models/user');
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -26,14 +42,22 @@ app.set('view options', { pretty: true });
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'bower_components')));
 
-MongoClient.connect(url, function (err, db) {
-  console.log('Connected');
-  // db.close();
+
+// seed data for testing
+var seedDB = require('./seed');
+seedDB();
+
+mongoose.connect(url, function (err, db) {
+  if (err) {
+    throw err
+  } else {
+    console.log('Connected');
+  }
 });
 
 // routes
@@ -41,8 +65,8 @@ app.use('/', indexRouter);
 app.use('/register', registerRouter);
 app.use('/login', loginRouter);
 app.use('/display', displayRouter);
-app.use('/new',newRouter);
-app.use('/edit',editRouter);
+app.use('/new', newRouter);
+app.use('/comment', commentRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
