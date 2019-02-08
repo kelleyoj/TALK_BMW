@@ -1,21 +1,16 @@
-// var express = require('express');
-// var router = express.Router();
-// var Blog = require('../models/blog');
+var express = require('express');
+var router = express.Router();
+var Blog = require('../models/blog');
 
-// /* Get Search page */
-// router.get('/', function (req, res, next) {
-//   Blog.find({}, function (err, blogs) {
-//     if (err) {
-//       res.locals.message = err.message;
-//       res.locals.error = req.app.get('env') === 'development' ? err : {};
+/* Get Search page */
+router.post('/', function (req, res, next) {
+    Blog.find({ $text: { $search: req.body.search } }, function (err, blogs) {
+        if (err) {
+            res.render('error');
+        } else {
+            res.render('search', { blog: blogs, search_term: req.body.search });
+        }
+    });
+})
 
-//       // render the error page
-//       res.status(err.status || 500);
-//       res.render('error');
-//     } else {
-//       res.render('index', { blog: blogs });
-//     }
-//   });
-// })
-
-// module.exports = router;
+module.exports = router;

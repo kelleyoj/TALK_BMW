@@ -1,0 +1,19 @@
+extends layout
+block content
+
+    .search-page
+        .container
+            h1 Search Results Below:
+            hr
+    .card-section
+          .container
+            .row
+              each entry in blog
+                .col-sm-3
+                  .card
+                    img.card-img-top(src=`${entry.image}`, alt='...')
+                    .card-body
+                      h5.card-title #{entry.title}
+                      p.card-text
+                        | #{entry.content.substring(0,90)} ....
+                      a.btn.btn-primary(href="/display/"+`${entry._id}`) Read More

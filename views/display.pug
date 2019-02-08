@@ -1,110 +1,114 @@
 extends layout
 block content
-    .display-wrapper
-        .row
-            .col-lg-8
-                .head-wrapper
-                    .container  
-                        .row
-                            .col-lg-12
-                                h1
-                                    strong #{blog.title}
-                        .row
-                            .col-lg-12
-                                h5
-                                    | #{blog.created.toDateString()} /
-                                    strong  otis kelley 
-                                    
-                        hr
-                //- picture for each blog post
-                .hero-wrapper
-                    .container
-                        img(src=`${blog.image}`, alt="").img-fluid
-                        h5 
-                            stong #{blog.subtitle}
-                //- Article body
-                .article-wrapper
-                    .container
-                        p #{blog.content}
-                        a(href="/display/"+`${blog.id}` +'/edit'): button.btn.btn-outline-success(type="submit", style='margin-right: 2%;') Edit Post
-                        a(href="/display/"+`${blog.id}` +'/delete'): button.btn.btn-outline-danger(type='submit', style='display: ;') Delete
-                        hr
-                //- comments
-                .comment-wrapper
-                    .container
-                        form(action=`/comment/${blog.id}/new`,method="post")
-                            .form-group
-                                label(for='exampleFormControlTextarea1') 
-                                    strong 
-                                        h5 Add Comment
-                                textarea#exampleFormControlTextarea1.form-control(rows='4', name='comment')
-                            button.btn.btn-outline-primary(type='submit') Submit
-                        .comments
+    .container-fluid#bg
+        .display-wrapper
+            .row
+                .col-lg-8
+                    .head-wrapper
+                        .container  
                             .row
                                 .col-lg-12
-                                    h5 
-                                        strong username 
-                                        | #{blog.comment.date.toDateString()}
+                                    if(error_msg != '')
+                                        .alert.alert-danger.alert-dismissible.fade.show(role='alert') #{error_msg}
+                                            button.close(type='button', data-dismiss='alert', aria-label='Close')
+                                                span(aria-hidden='true') ×
+                                    h1
+                                        strong #{blog.title}
+                            .row
                                 .col-lg-12
-                                    p #{blog.comment.comment}
-                                    button.btn.btn-outline-danger(type='submit', style='display: ;') Delete
-            //- right side of the blog
-            .col-lg-4
-                .right-wrapper
-                    .container 
-                        h5 
-                            strong Stay conected
-                        hr
-                        .container
-                            .row.no-gutters
-                                
-                                    .col-sm-6
-                                        .row
-                                            .col-sm-3#twitter-logo
-                                                a(href="#"): i.fab.fa-twitter
-                                            .col-sm-6#twitter-word
-                                                a(href="#") Twitter
-                                    .col-sm-6
-                                        .row
-                                            .col-sm-3#fb-logo
-                                                a(href="#"): i.fab.fa-facebook-f
-                                            .col-sm-6#fb-word
-                                                a(href="#") Facebook
-                            .row.no-gutters
-                                    .col-sm-6
-                                        .row
-                                            .col-sm-3#insta-logo
-                                                a(href="#"): i.fab.fa-instagram
-                                            .col-sm-6#insta-word
-                                                a(href="#") Instagram
-                                    .col-sm-6
-                                        .row
-                                            .col-sm-3#pin-logo
-                                                a(href="#"): i.fab.fa-pinterest
-                                            .col-sm-6#pin-word
-                                                a(href="#") Pinterest
-                    .latest-post
-                        .container
-                            h5 
-                                | Latest Post
+                                    span #{blog.created.toDateString()} /
+                                        strong  #{blog.author} 
+                                        
                             hr
-                            .row.post
-                                .col-sm-4
-                                    .post-img
-                                        img(src="https://images.unsplash.com/photo-1536364127590-1594e3161294?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80", alt="")
-                                .col-sm-8
-                                    p 5 ways to drive a manual
+                    //- picture for each blog post
+                    .hero-wrapper
+                        .container
+                            img(src=`${blog.image}`, alt="").img-fluid
+                            h5 
+                                stong #{blog.subtitle}
+                    //- Article body
+                    .article-wrapper
+                        .container
+                            p #{blog.content}
+                            if (user != undefined )
+                                if user.email == auth
+                                    a(href="/display/"+`${blog.id}` +'/edit'): button.btn.btn-outline-success(type="submit", style='margin-right: 2%;') Edit Post
+                                    a(href="/display/"+`${blog.id}` +'/delete'): button.btn.btn-outline-danger(type='submit', style='display: ;') Delete
+                            hr
+                    //- comments
+                    .comment-wrapper
+                        .container
+                                form(action=`/comment/${blog.id}/new`,method="post")
+                                    .form-group
+                                        label(for='exampleFormControlTextarea1')
+                                            strong 
+                                                h5 Add Comment
+                                        textarea(name="comment", cols="3", rows="4")#exampleFormControlTextarea1.form-control
+                                    button.btn.btn-outline-primary(type='submit') Submit
 
-                            .row.post
-                                .col-sm-4
-                                    .post-img
-                                        img(src="https://images.unsplash.com/photo-1546898453-73f51e69b1d7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60", alt="")
-                                .col-sm-8
-                                    p Save the manual      
-                            
-                            .row.post
-                                .col-sm-4
-                                    .post-img
-                                        img(src="https://images.unsplash.com/photo-1542231705231-d01306092320?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=564&q=80", alt="")
-                                .col-sm-8
-                                    p Why bmw Interior is the best  
+                                h5 Comments Below:
+                                if comment != null
+                                    each comments in comment
+                                        .comments
+                                            .row
+                                                .col-lg-12
+                                                    span 
+                                                        strong #{comments.author}
+                                                        | #{comments.created.toDateString()}
+                                                .col-lg-12
+                                                    p #{comments.description}
+                                                    if (user != undefined )
+                                                        if user.email == auth
+                                                            a(href=`/comment/${blog.id}/delete`): button.btn.btn-outline-danger(type='submit', style='display: ;') Delete
+                //- right side of the blog
+                .col-lg-4
+                    .right-wrapper
+                        .container 
+                            h5 
+                                strong Stay conected
+                            hr
+                            .container
+                                .row.no-gutters
+                                    
+                                        .col-sm-6
+                                            .row
+                                                .col-sm-3#twitter-logo
+                                                    a(href="#"): i.fab.fa-twitter
+                                                .col-sm-9#twitter-word
+                                                    a(href="#") Twitter
+                                        .col-sm-6
+                                            .row
+                                                .col-sm-3#fb-logo
+                                                    a(href="#"): i.fab.fa-facebook-f
+                                                .col-sm-9#fb-word
+                                                    a(href="#") Facebook
+                                .row.no-gutters
+                                        .col-sm-6
+                                            .row
+                                                .col-sm-3#insta-logo
+                                                    a(href="#"): i.fab.fa-instagram
+                                                .col-sm-9#insta-word
+                                                    a(href="#") Instagram
+                                        .col-sm-6
+                                            .row
+                                                .col-sm-3#pin-logo
+                                                    a(href="#"): i.fab.fa-pinterest
+                                                .col-sm-9#pin-word
+                                                    a(href="#") Pinterest
+                        .latest-post
+                            .container
+                                h5 
+                                    | Latest Post
+                                hr
+                                if post != undefined
+                                    for posts, index in post
+                                        if(index === 4)
+                                            - break;
+                                        else
+                                            .row.post
+                                                .col-sm-6
+                                                    .post-img
+                                                        img(src=`${posts.image}`, alt="")
+                                                .col-sm-6
+                                                    p #{posts.title}  
+                                

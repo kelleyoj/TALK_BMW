@@ -15,7 +15,15 @@ var blogSchema = new Schema({
     },
     created: {type: Date, default: Date.now}
 });
-
+blogSchema.index({
+    title: 'text',
+    content: 'text'
+},{
+    weights:{
+        title: 1,
+        content: 5
+    }
+});
 var Blog = mongoose.model('Blog', blogSchema,'blog');
 
 module.exports = Blog;
