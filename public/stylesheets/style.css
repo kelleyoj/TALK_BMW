@@ -122,12 +122,6 @@ blog post style for index
     Login page style 
     
 ************************/
-/* .login-bg{
-    background-image: url('https://images.unsplash.com/photo-1528872042734-8f50f9d3c59b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80');
-    background-size: cover;
-    width: 100%;
-    height: 100vh;
-} */
 .login-wrapper{
     position: absolute;
     /* border: 2px solid red; */
@@ -365,9 +359,9 @@ blog post style for index
 ************************/
 
 @media screen and (min-width: 300px)  {
-    .lower-nav ul li a{
+    /* .lower-nav ul li a{
         color: red;
-    }
+    } */
     .lower-nav{
         font-size: 40%;
     }
@@ -436,9 +430,9 @@ blog post style for index
 }
 
 @media screen and (min-width: 600px)  {
-    .lower-nav ul li a{
+    /* .lower-nav ul li a{
         color: green;
-    }
+    } */
     .header-text {
         left: 12em;
     }
@@ -499,9 +493,9 @@ blog post style for index
 }
 
 @media screen and (min-width: 1000px) {
-    .lower-nav ul li a{
+    /* .lower-nav ul li a{
         color: purple;
-    }
+    } */
     .header-text .top-txt {
         font-size: 1.6em;
     }
@@ -520,9 +514,9 @@ blog post style for index
 }
 
 @media screen and (min-width: 1200px) {
-    .lower-nav ul li a{
+    /* .lower-nav ul li a{
         color: orange;
-    }
+    } */
     .header-text {
         left: 30em;
     }

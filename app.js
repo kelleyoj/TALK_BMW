@@ -8,6 +8,7 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var flash = require('connect-flash');
 var session = require('express-session');
+var MongoDBStore = require('connect-mongodb-session')(session);
 var dotenv = require('dotenv').config();
 
 //magic∂
@@ -18,20 +19,38 @@ require('./config/passport')(passport);
 
 // Connect to MongoDB
 var url = process.env.DATABASEURL;
-mongoose.connect(url,{ useNewUrlParser: true },{ useMongoClient:true },function(err){
-  if(err){
+mongoose.connect(url, { useNewUrlParser: true }, function (err) {
+  if (err) {
     console.log(err);
   }
 });
 
+// Storing sessions in Db for production
+var store = new MongoDBStore({
+  uri: url,
+  collection: 'sessions'
+});
+
+// Catch connect-mongodb-sessions errors
+store.on('error', function(error) {
+  console.log(error);
+});
+
+app.use(require('express-session')({
+  secret: 'This is a secret',
+  store: store,
+  resave: true,
+  saveUninitialized: true
+}));
+
 // Express session
-app.use(
-  session({
-    secret: 'secret',
-    resave: true,
-    saveUninitialized: true
-  })
-);
+// app.use(
+//   session({
+//     secret: 'secret',
+//     resave: true,
+//     saveUninitialized: true
+//   })
+// );
 
 // Passport middleware
 app.use(passport.initialize());
@@ -71,7 +90,7 @@ app.use('/user', require('./routes/user'));
 app.use('/display', require('./routes/display'));
 app.use('/new', require('./routes/display'));
 app.use('/comment', require('./routes/display'));
-app.use('/search',require('./routes/search'));
+app.use('/search', require('./routes/search'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
