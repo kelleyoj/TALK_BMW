@@ -18,7 +18,7 @@ require('./config/passport')(passport);
 
 // Connect to MongoDB
 var url = process.env.DATABASEURL;
-mongoose.connect(url,{ useNewUrlParser: true },function(err){
+mongoose.connect(url,{ useNewUrlParser: true },{ useMongoClient:true },function(err){
   if(err){
     console.log(err);
   }
