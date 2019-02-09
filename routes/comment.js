@@ -8,8 +8,7 @@ var validator = require('validator');
 router.post('/:id/new', function (req, res) {
     var comment = req.body.comment;
     var isEmpty = validator.isEmpty(comment);
-
-
+    
     if (isEmpty) {
         req.flash('error_msg', 'Comments Can\'t Be Empty');
         res.redirect('/display/' + req.params.id);

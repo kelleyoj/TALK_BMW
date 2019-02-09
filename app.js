@@ -46,15 +46,6 @@ app.use(require('express-session')({
   saveUninitialized: true
 }));
 
-// Express session
-// app.use(
-//   session({
-//     secret: 'secret',
-//     resave: true,
-//     saveUninitialized: true
-//   })
-// );
-
 // Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
@@ -91,8 +82,8 @@ app.use(express.static(path.join(__dirname, 'bower_components')));
 app.use('/', require('./routes/index'));
 app.use('/user', require('./routes/user'));
 app.use('/display', require('./routes/display'));
-app.use('/new', require('./routes/display'));
-app.use('/comment', require('./routes/display'));
+app.use('/new', require('./routes/new'));
+app.use('/comment', require('./routes/comment'));
 app.use('/search', require('./routes/search'));
 
 // catch 404 and forward to error handler
